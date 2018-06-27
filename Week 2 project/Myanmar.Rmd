@@ -5,9 +5,9 @@ date: "June 26, 2018"
 output: html_document
 ---
 ## Introduction
-This is an interactive map using R Markdown[http://rmarkdown.rstudio.com/] and Leaflet[http://leafletjs.com/]
+This is an interactive map using [R Markdown](http://rmarkdown.rstudio.com/) and [Leaflet](http://leafletjs.com/)
 
-The map shows the 10 most populous cities in Myanmar. Clicking on each marker displays the city name, rank and population. The data was obtained from [https://www.worldatlas.com/articles/biggest-cities-in-myanmar-burma.html]
+The map shows the 10 most populous cities in Myanmar. Clicking on each marker displays the city name, rank and population. The data was obtained from https://www.worldatlas.com/articles/biggest-cities-in-myanmar-burma.html. The source code can be found in my [GitHub repo](https://github.com/faeezs/data-products/tree/gh-pages/Week%202%20project)
 
 ```{r, echo=FALSE}
 library(leaflet)
