@@ -1,0 +1,29 @@
+---
+title: "Top 10 Most Populous Cities in the Myanmar"
+author: "faeez safedien"
+date: "June 26, 2018"
+output: html_document
+---
+## Introduction
+This is an interactive map using R Markdown[http://rmarkdown.rstudio.com/] and Leaflet[http://leafletjs.com/]
+
+The map shows the 10 most populous cities in Myanmar. Clicking on each marker displays the city name, rank and population. The data was obtained from [https://www.worldatlas.com/articles/biggest-cities-in-myanmar-burma.html]
+
+```{r, echo=FALSE}
+library(leaflet)
+dff <- data.frame(matrix(ncol = 4, nrow = 0))
+lat <- c(16.8661, 21.9588, 19.7633, 16.4543, 20.7888, 22.1216, 20.8766, 17.3221, 16.7754, 12.4492)
+long <- c(96.1951, 96.0891, 96.0785, 97.644, 97.0337,95.1536, 95.8602, 96.4663, 94.7381, 98.6271)
+rank <- c(1:10)
+city <- c("Yangon", "Mandalay", "Naypyitaw", "Mawlamyine", "Taunggyi", "Monywa", "Meiktila", "Bago", "Pathein", "Mergui")
+pop <- c(5998000, 1225133, 1158367, 491130, 380665, 371963, 309465, 288120, 286684, 284037)
+df <- data.frame(latitude = lat, longitude = long, "rank" = rank, "city" = city, "population" = pop, stringsAsFactors = FALSE)
+df %>% leaflet() %>%
+  addTiles('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png') %>%
+  addMarkers(
+    lat = df$lat, 
+    lng = df$long, 
+    popup = paste(df$city, "<br>", "Rank:", df$rank, "<br>", "Population:", df$population),
+    clusterOptions = markerClusterOptions()) %>%
+  addCircleMarkers(radius = sqrt(df$population/10e3))
+```
