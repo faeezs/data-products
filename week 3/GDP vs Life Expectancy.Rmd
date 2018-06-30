@@ -1,0 +1,38 @@
+---
+title: "GDP vs Life Expectancy"
+author: "faeez safedien"
+date: "June 30, 2018"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Background
+
+This is an R Markdown presentation that features a plot created with Plotly.
+
+This project this is done as week 3 assignment for Developing Data Products Coursera’s course.
+
+## Excecutive Summary
+
+Using data from the gapminder library in R we graph GDP per Capita vs Life Expentancy. The size of the bubbles are proportional to the population of each country and are colour coded to represent the continent
+
+
+## Interactive Graph
+
+```{r, message=FALSE}
+library(plotly)
+library(gapminder)
+library(plotly)
+library(datasets)
+gDat <- gapminder
+df <- subset(gDat, year == 2007)
+p <- plot_ly(df, x = ~gdpPercap, y = ~lifeExp,type ='scatter', mode = "markers" ,text= df$country, color = as.factor(df$continent), size=~pop, sizes = c(5,50), marker = list(opacicty=50,sizemode='diameter'))
+layout(p, title = "Life Expectancy vs GDP per Capita" ,xaxis = list(type = "log"),
+       yaxis = list(type = "log"))
+```
+
+## References
+The code can be found at in my GitHub repo
