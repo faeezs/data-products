@@ -17,7 +17,7 @@ This project this is done as week 3 assignment for Developing Data Products Cour
 
 ## Excecutive Summary
 
-Using data from the gapminder library in R we graph GDP per Capita vs Life Expentancy. The size of the bubbles are proportional to the population of each country and are colour coded to represent the continent
+Using data from the gapminder library in R we graph GDP per Capita vs Life Expentancy for the year 2007. The size of the bubbles are proportional to the population of each country and are colour coded to represent the continent
 
 
 ## Interactive Graph
@@ -29,8 +29,8 @@ library(plotly)
 library(datasets)
 gDat <- gapminder
 df <- subset(gDat, year == 2007)
-p <- plot_ly(df, x = ~gdpPercap, y = ~lifeExp,type ='scatter', mode = "markers" ,hoverinfo = 'text', text= ~paste(df$country, '<br> Life Expectancy: ', df$lifeExp, 'years <br> GDP per Capita: ', df$gdpPercap, '</br> Population: ', df$pop), color = as.factor(df$continent), size=~pop, sizes = c(5,40), marker = list(opacicty=50,sizemode='diameter'))
-layout(p, title = "Life Expectancy vs GDP per Capita" ,xaxis = list(type = "log"),
+p <- plot_ly(df, x = ~gdpPercap, y = ~lifeExp,type ='scatter', mode = "markers" ,hoverinfo = 'text', text= ~paste(df$country, '<br> Life Expectancy: ', df$lifeExp, 'years <br> GDP per Capita: ', round(df$gdpPercap), 'USD </br> Population: ', df$pop), color = as.factor(df$continent), size=~pop, sizes = c(5,40), marker = list(opacicty=50,sizemode='diameter'))
+layout(p, title = "Life Expectancy vs GDP per Capita in 2007" ,xaxis = list(type = "log"),
        yaxis = list(type = "log"))
 ```
 
