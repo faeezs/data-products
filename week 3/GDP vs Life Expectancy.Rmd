@@ -29,10 +29,10 @@ library(plotly)
 library(datasets)
 gDat <- gapminder
 df <- subset(gDat, year == 2007)
-p <- plot_ly(df, x = ~gdpPercap, y = ~lifeExp,type ='scatter', mode = "markers" ,text= df$country, color = as.factor(df$continent), size=~pop, sizes = c(5,50), marker = list(opacicty=50,sizemode='diameter'))
+p <- plot_ly(df, x = ~gdpPercap, y = ~lifeExp,type ='scatter', mode = "markers" ,hoverinfo = 'text', text= ~paste(df$country, '<br> Life Expectancy: ', df$lifeExp, 'years <br> GDP per Capita: ', df$gdpPercap, '</br> Population: ', df$pop), color = as.factor(df$continent), size=~pop, sizes = c(5,40), marker = list(opacicty=50,sizemode='diameter'))
 layout(p, title = "Life Expectancy vs GDP per Capita" ,xaxis = list(type = "log"),
        yaxis = list(type = "log"))
 ```
 
 ## References
-The code can be found at in my GitHub repo
+The code can be found at in my [GitHub repo](https://github.com/faeezs/data-products/tree/gh-pages/week%203)
